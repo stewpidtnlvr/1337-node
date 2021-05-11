@@ -1,12 +1,7 @@
-app_json = {
-  'name' => "1337-node",
-  'description' => 'idk lol',
-  'keywords' => keywords,
-  'website' => website,
-  'repository' => "https://github.com/stewpidtnlvr/1337-node.git",
-  'buildpacks' => "package.json",
-  'formation' => formation,
-  'addons' => addons,
-  'env' => env_variables,
-  'scripts' => scripts
-} 
+{
+  "name": "1337-Node",
+  "description": "A Node-Unblocker Inspired Proxy for bypassing internet restrictions",
+  "repository": "https://github.com/stewpidtnlvr/1337-node/",
+  "logo": "https://github.com/stewpidtnlvr/1337-node/public/images/1337nodebeta1.png",
+  "keywords": ["1337node", "proxy", "web-unblocker", "internet", "unblocker", "website-unblocker", "1337"]
+}

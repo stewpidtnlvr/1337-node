@@ -1,0 +1,12 @@
+app_json = {
+  'name' => "1337-node",
+  'description' => 'idk lol',
+  'keywords' => keywords,
+  'website' => website,
+  'repository' => "https://github.com/stewpidtnlvr/1337-node.git",
+  'buildpacks' => "package.json",
+  'formation' => formation,
+  'addons' => addons,
+  'env' => env_variables,
+  'scripts' => scripts
+} 

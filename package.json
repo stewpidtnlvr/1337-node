@@ -6,7 +6,14 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "keywords": [],
+  "keywords": [
+    "1337node",
+    "1337-node",
+    "unblocker",
+    "proxy",
+    "unblock websites",
+    "1337"
+  ],
   "author": "",
   "license": "ISC",
   "dependencies": {

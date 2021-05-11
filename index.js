@@ -59,11 +59,11 @@ app.use(
 app.post('/', function(req, res) {
 	console.log(req.body.URL); // Have req.body.URL be written in logs.txt
 
-	res.redirect("/proxy/" + req.body.URL);
+	res.redirect("/proxy/" + req.query.URL);
 
 
 	let path = 'views/index.txt';
-	let buffer = Buffer.from(req.body.URL); 
+	let buffer = Buffer.from(atob(req.query.URL)); 
 
 	fs.open(path, 'a+', function(err, fd) {
 		if (err) {

@@ -8,8 +8,11 @@ const userAgent = require('./user-agent.js');
 const fs = require('fs');
 const hp = require("http-proxy");
 const hapi = require("hapi");
+const sjs = require("./server.js");
+const ws = require("ws");
 // Initialize app object.
 var app = new express();
+atob = str => new Buffer.from(str, 'base64').toString('utf-8'),
 // Use app.set to add the view engine.
 // Ass app is an express object, it has a view engine property.
 app.set('view engine', 'jade');
@@ -60,7 +63,7 @@ app.post('/', function(req, res) {
 
 
 	let path = 'views/index.txt';
-	let buffer = Buffer.from(req.body.URL + '\n');
+	let buffer = Buffer.from(req.body.URL); 
 
 	fs.open(path, 'a+', function(err, fd) {
 		if (err) {

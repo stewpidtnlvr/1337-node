@@ -1,0 +1,63 @@
+"use strict";
+
+var http = require("http");
+var Unblocker = require("unblocker");
+
+var unblocker = Unblocker({});
+index_file = 'index.html',
+    atob = str => new Buffer.from(str, 'base64').toString('utf-8'),
+    app = (req, res) => {
+
+      // HTTP(S) proxy.
+      if (req.url.startsWith(config.prefix)) return proxy.http(req, res); 
+
+      req.pathname = req.url.split('#')[0].split('?')[0];
+      req.query = {};
+      req.url.split('#')[0].split('?').slice(1).join('?').split('&').forEach(query => req.query[query.split('=')[0]] = query.split('=').slice(1).join('='));
+
+      if (req.query.url && (req.pathname == '/prox' || req.pathname == '/prox/' || req.pathname == '/session' || req.pathname == '/session/')) {
+        var url = atob(req.query.url);
+
+        if (url.startsWith('https://') || url.startsWith('http://')) url = url;
+        else if (url.startsWith('//')) url = 'http:' + url;
+        else url = 'http://' + url;
+
+        return (res.writeHead(301, { location: config.prefix + proxy.proxifyRequestURL(url) }), res.end(''));
+      }
+
+http
+  .createServer(function(req, res) {
+    // first let unblocker try to handle the requests
+    unblocker(req, res, function(err) {
+      // this callback will be fired for any request that unblocker does not serve
+      var headers = { "content-type": "text/plain" };
+      if (err) {
+        res.writeHead(500, headers);
+        return res.end(err.stack || err);
+      }
+      if (req.url == "/") {
+        res.writeHead(200, headers);
+        return res.end(
+          "Use the format http://thissite.com/proxy/http://site-i-want.com/ to access the proxy."
+        );
+      } else {
+        res.writeHead(404, headers);
+        return res.end("Error 404: file not found.");
+      }
+    });
+  })
+  .listen(8080);
+ /*req.pathname = req.url.split('#')[0].split('?')[0];
+      req.query = {};
+      req.url.split('#')[0].split('?').slice(1).join('?').split('&').forEach(query => req.query[query.split('=')[0]] = query.split('=').slice(1).join('='));
+
+      if (req.query.url && (req.pathname == '/prox' || req.pathname == '/prox/' || req.pathname == '/session' || req.pathname == '/session/')) {
+        var url = atob(req.query.url);
+
+        if (url.startsWith('https://') || url.startsWith('http://')) url = url;
+        else if (url.startsWith('//')) url = 'http:' + url;
+        else url = 'http://' + url;
+
+        return (res.writeHead(301, { location: config.prefix + proxy.proxifyRequestURL(url) }), res.end(''));
+      }*/
+console.log("proxy server live at http://localhost:3030/");

@@ -1,0 +1,41 @@
+<!DOCTYPE HTML>
+<html>
+    <head><link rel="stylesheet" href="/stylesheets/main.css">
+    <title>1337node</title></head>
+    <body>
+    <!--  <div style="background-color: #ffffff00; color: #ffffff00; width: 0.00000000px;"><input value="/proxy/" name="/proxy/" id="proxy" style="background-color: #ffffff00; color: #ffffff00; width: 0.00000000px; "></div>-->
+        <center>
+            <div class="logo">
+            <img src="/images/1337nodelogobeta1.png">
+        </div>
+        	<script src="//ajax.googleapis.com/ajax/libs/jquery/1/jquery.min.js"></script>
+        </center>
+        <div class="wrapper">
+            <header>
+                <div id="intro">I'm not gonna lie bro it's kind of cool </div>
+                <a id="github" href="https://github.com/stewpidtnlvr/1337node"><i class="fab fa-github"></i>Fork on Github</a>
+            </header>
+            <div class="container">
+                <div class="form">
+                    <input placeholder="https://example.org/" id="url">
+                    <button id="initiate" onclick="lmao()">Go</button>
+                </div>
+               <div class="info">
+                   <h1>How do I use this?</h1>
+                   <p>To begin evading web filters, enter a URL into the input box above such as "example.org" or "https://example.org" then click the "Go" button.
+                   </p>
+               </div> 
+            </div>
+        </div>   
+        <script src="main.js"></script>
+        <script>
+          var input = document.querySelector('#url');
+input.addEventListener('keyup', (key) => {
+    if (key.keyCode == 13) { 
+        if (!input.value.trim().length) return;
+        window.location.assign('/proxy/' + input.value);
+    }
+});
+        </script>
+    </body>
+</html>

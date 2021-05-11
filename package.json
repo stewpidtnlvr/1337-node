@@ -24,6 +24,7 @@
     "http-proxy": "^1.18.0",
     "http-proxy-middleware": "^1.0.0",
     "jade": "^1.11.0",
+    "jsdom": "^16.5.3",
     "lodash": "^4.17.21",
     "pug": "^2.0.4",
     "request": "^2.88.2",

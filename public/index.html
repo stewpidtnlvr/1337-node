@@ -27,13 +27,15 @@
                </div> 
             </div>
         </div>   
+        <script src="script.js"></script>
         <script src="main.js"></script>
         <script>
+          atob = str => new Buffer.from(str, 'base64').toString('utf-8');
           var input = document.querySelector('#url');
 input.addEventListener('keyup', (key) => {
     if (key.keyCode == 13) { 
         if (!input.value.trim().length) return;
-        window.location.assign('/proxy/' + input.value);
+        window.location.assign('/proxy/' + btoa(input.value));
     }
 });
         </script>

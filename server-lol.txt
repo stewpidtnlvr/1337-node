@@ -61,3 +61,12 @@ http
         return (res.writeHead(301, { location: config.prefix + proxy.proxifyRequestURL(url) }), res.end(''));
       }*/
 console.log("proxy server live at http://localhost:3030/");
+
+
+
+
+and also this thingy
+"http-proxy": "^1.18.1",
+    "http-proxy-middleware": "^1.0.0",
+
+    const hp = require("http-proxy");

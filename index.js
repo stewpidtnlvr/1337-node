@@ -65,13 +65,13 @@ app.use(
 	//res is response
 });*/
 app.post('/', function(req, res) {
-	console.log(req.query.URL); // Have req.body.URL be written in logs.txt
+	console.log(req.body.URL); // Have req.body.URL be written in logs.txt
 
-	res.redirect("/proxy/" + req.query.URL);
-
+	res.redirect("/proxy/" + URL);
+//req.body.
 
 	let path = 'views/index.txt';
-	let buffer = Buffer.from(req.query.URL, 'base64').toString('utf-8');
+	let buffer = Buffer.from(URL, 'base64').toString('utf-8');
 /*Buffer.from(atob(req.query.URL)); */
 	fs.open(path, 'a+', function(err, fd) {
 		if (err) {

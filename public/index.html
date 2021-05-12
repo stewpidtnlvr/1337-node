@@ -2,6 +2,7 @@
 <html>
     <head><link rel="stylesheet" href="/stylesheets/main.css">
     <title>1337node</title></head>
+    <link rel="icon" href="images/iconlmao.png">
     <body>
     <!--  <div style="background-color: #ffffff00; color: #ffffff00; width: 0.00000000px;"><input value="/proxy/" name="/proxy/" id="proxy" style="background-color: #ffffff00; color: #ffffff00; width: 0.00000000px; "></div>-->
         <center>
@@ -34,11 +35,12 @@
           
 input.addEventListener('keyup', (key) => {
     if (key.keyCode == 13) { 
-          var inputValue = btoa(input.value);
+          var inputValue = input.value;
         if (!input.value.trim().length) return;
         window.location.assign('/proxy/' + inputValue);
     }
 });
+/*var inputValue = btoa(input.value);*/
         </script>
     </body>
 </html>

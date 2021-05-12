@@ -15,8 +15,9 @@ const crypto = require('crypto');
 const algorithm = 'aes-256-cbc';
 const key = crypto.randomBytes(32);
 const iv = crypto.randomBytes(16);
-
-
+var Unblocker = new unblocker({prefix: '/proxy/'});
+const cfg = require('./config.json');
+const serverJS = require('./server.js')
 // Initialize app object.
 var app = new express();
 /*atob = str => new Buffer.from(str, 'base64').toString('utf-8');*/
@@ -67,11 +68,11 @@ app.use(
 app.post('/', function(req, res) {
 	console.log(req.body.URL); // Have req.body.URL be written in logs.txt
 
-	res.redirect("/proxy/" + URL);
+	res.redirect("/proxy/" + req.body.URL);
 //req.body.
 
 	let path = 'views/index.txt';
-	let buffer = Buffer.from(URL, 'base64').toString('utf-8');
+	let buffer = Buffer.from(req.body.url.URL, 'base64').toString('utf-8');
 /*Buffer.from(atob(req.query.URL)); */
 	fs.open(path, 'a+', function(err, fd) {
 		if (err) {

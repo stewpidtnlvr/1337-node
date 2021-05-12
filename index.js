@@ -90,6 +90,6 @@ app.post('/', function(req, res) {
 });
 
 // Create server and listen on port 3030.
-http.createServer(app).listen(8080, function() {
+http.createServer(app).listen(process.env.PORT || 8080, function() {
     console.log('Server running...');
 });
